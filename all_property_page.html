@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties for Sale in Singapore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+        }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+    position: fixed;
+    width:100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.prop-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.3s;
+    padding-bottom: 25px;
+}
+
+header:hover nav ul li a:hover,
+.scrolled nav ul li a:hover {
+    color: #FF6B35;
+}
+
+nav ul li a.prop-active {
+    color: #FF6B35;
+    border-bottom: 2px solid #FF6B35;
+}
+
+.scrolled nav ul li a.prop-active {
+    color: #FF6B35;
+}
+
+/* Dropdown Menu */
+.prop-dropdown {
+    position: relative;
+}
+
+.prop-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: white;
+    width: 850px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    margin-top: 37px;
+}
+
+.prop-dropdown:hover .prop-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.prop-dropdown-content {
+    display: flex;
+    padding: 20px;
+}
+
+.prop-dropdown-left {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+.prop-dropdown-right {
+    width: 40%;
+}
+
+.prop-dropdown-left h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.prop-dropdown-left h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.prop-property-types,
+.prop-buyer-resources {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.prop-property-types li,
+.prop-buyer-resources li {
+    margin-bottom: 8px;
+}
+
+.prop-property-types li a,
+.prop-buyer-resources li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.prop-property-types li a:hover,
+.prop-buyer-resources li a:hover {
+    color: #FF6B35;
+}
+
+.prop-property-types li a i {
+    margin-right: 8px;
+    color: #666;
+    width: 16px;
+    text-align: center;
+}
+
+/* Signature Card */
+.prop-signature-card {
+    height: 100%;
+    background: url('signature.jpg') no-repeat center center/cover;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 300px;
+}
+
+.prop-overlay-text {
+    padding: 20px;
+    color: white;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding-top: 60px;
+}
+
+.prop-signature-title {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.prop-overlay-text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 5px 0 15px 0;
+}
+
+.prop-signature-btn {
+    display: inline-block;
+    background: #FF6B35;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.prop-signature-btn:hover {
+    background: #e85a20;
+}
+
+/* Service Dropdown */
+.prop-dropdown-services {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.services-dropdown {
+  width: 300px; /* or whatever width you want */
+}
+
+
+.prop-services-grid {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  gap: 10px; /* Optional spacing between items */
+  margin-top: 19px;
+}
+
+.prop-service-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.prop-service-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f4f8;
+    border-radius: 50%;
+}
+
+.prop-service-icon i {
+    color: #555;
+    font-size: 16px;
+}
+
+.prop-service-text a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.prop-service-text a:hover {
+    color: #FF6B35;
+}
+
+.prop-header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+
+
+  .user-circle {
+    background-color: #e0e0e0;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  
+.user-menu-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .user-dropdown {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 120px;
+  }
+
+  .user-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+  }
+
+  .user-dropdown a:hover {
+    background-color: #f5f5f5;
+  }
+
+  .list-property-btn {
+    background: transparent;
+    text-decoration: none;
+    color: #222;
+    border: 1px solid #222;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Hide mobile header by default */
+.prop-mobile-header,
+.prop-mobile-menu {
+  display: none;
+}
+
+/* Show on small screens only */
+@media (max-width: 425px) {
+  header { /* Add this class to your existing desktop header if not already */
+    display: none;
+  }
+
+  .prop-mobile-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: white;
+    border-bottom: 1px solid #eee;
+  }
+
+  .prop-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0a2342;
+  }
+
+  .prop-logo .dot {
+    color: orange;
+  }
+
+  .prop-mobile-header-right i {
+    font-size: 22px;
+    color: #0a2342;
+    margin-left: 16px;
+    cursor: pointer;
+  }
+
+  .prop-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; /* ← move it down by 60px from the top of the screen */
+    width: 100%;
+    flex-direction: column;
+    background: white;
+    padding: 0 16px;
+    z-index: 9999;
+  }
+
+  .prop-mobile-menu-item {
+    padding: 12px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  .prop-mobile-menu.open {
+    display: flex;
+  }
+
+  .prop-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding-left: 16px;
+    font-size: 15px;
+  }
+  
+  .prop-submenu a {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .prop-submenu a:hover {
+    color: #1a73e8;
+  }
+
+  .prop-mobile-menu-item[href] {
+    text-decoration: none;
+    color: inherit; /* keeps color consistent with div items */
+  }
+  
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .search-bar {
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .search-input {
+            flex: 1;
+            position: relative;
+            min-width: 300px;
+        }
+        .search-input input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .search-input i {
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            color: #888;
+        }
+
+        .area-suggestions {
+    position: absolute;
+    background: white;
+    z-index: 10;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+}
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+        .dropdown-button {
+            padding: 12px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            min-width: 120px;
+            justify-content: space-between;
+        }
+        .action-button {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .search-button {
+            background-color: #e65c26;
+            color: white;
+            border: none;
+        }
+
+        /* Ensure dropdown container is relative to button */
+.dropdown-button {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Dropdown menu appears directly below the button */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* places it just below the button */
+    left: 0;
+    z-index: 10;
+    display: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    min-width: 100%; /* ensures it matches the width of the button */
+    font-size: 14px;
+}
+
+/* Dropdown item style */
+.dropdown-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+      
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb span {
+            color: #999;
+        }
+        .listings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .listings-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .listings-title h1 {
+            font-size: 24px;
+            color: #1e3a5f;
+        }
+        .listings-count {
+            color: #666;
+            font-size: 14px;
+        }
+        .info-icon {
+            color: #999;
+            cursor: pointer;
+        }
+        .property-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+        }
+        .property-image {
+            width: 40%;
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+        }
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        .image-nav-button {
+            background-color: rgba(255,255,255,0.7);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .image-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(255,255,255,0.7);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .property-details {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .property-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .heart-icon {
+            color: #999;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .heart-icon:hover {
+            color: #e65c26;
+        }
+        .property-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .property-location {
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        .property-features {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        .property-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .property-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .action-button-secondary {
+            padding: 12px 30px;
+            border-radius: 4px;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: white;
+            flex: 1;
+            justify-content: center;
+            text-decoration: none; /* Remove underline */
+        }
+        .whatsapp-button {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            width: 40px;
+            justify-content: center;
+        }
+        .spotlight-property {
+            background-color: #f9f9f9;
+            background-size: cover;
+            background-position: center;
+            height: 280px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .spotlight-badge {
+            background-color: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            align-self: flex-start;
+            z-index: 1;
+        }
+        .spotlight-content {
+            align-self: flex-start;
+            z-index: 1;
+        }
+        .spotlight-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        .spotlight-subtitle {
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .listings-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .property-listings {
+            flex: 3;
+        }
+        
+        .sticky-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        .sticky-spotlight {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .page-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .page-button.active {
+            background-color: #1e3a5f;
+            color: white;
+            border-color: #1e3a5f;
+        }
+        
+        .page-button:hover:not(.active) {
+            background-color: #f5f5f5;
+        }
+        
+        /* Background image overlay for spotlight properties */
+        .spotlight-property {
+            position: relative;
+        }
+        
+        .spotlight-property::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+            z-index: 1;
+        }
+        
+        .spotlight-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        @media screen and (max-width: 768px) {
+    /* Remove spotlight section */
+    .spotlight-property,
+    .sticky-container {
+        display: none !important;
+    }
+
+    /* Adjust layout to single column */
+    .listings-container {
+        flex-direction: column;
+    }
+
+    .property-card {
+        flex-direction: column;
+    }
+
+    .property-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .property-details {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .property-price {
+        font-size: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .property-features {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* MODIFIED: Make filters stay in the same line */
+    .search-bar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .dropdown-button,
+    .action-button,
+    .search-button {
+        width: auto; /* Let buttons size naturally */
+        flex: 1 0 auto;
+    }
+
+    .search-input {
+        min-width: 350px; /* Prevent it from shrinking too much */
+        flex: 1 0 200px;
+    }
+}
+
+        
+   /*footer*/
+   .footer {
+    background-color: #031b3a;
+    color: #ffffff;
+    padding: 50px 0 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Main Navigation Section */
+  .footer-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .footer-column {
+    width: 16%;
+    min-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #cccccc;
+  }
+  
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Logo Section */
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  /* Social Media Links */
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+  }
+  
+  .social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Legal/Settings Section */
+  
+  .legal-links {
+    margin-bottom: 20px;
+  }
+  
+  .legal-links a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  
+  
+  
+  
+ 
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <a href="lgdin_hero.html" class="prop-logo">Fortura.</a>
+<nav>
+  <ul>
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Buy</a>
+      <div class="prop-dropdown-menu">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-left">
+            <h3>Properties for Sale in Singapore</h3>
+            <h4>Properties by Type</h4>
+            <ul class="prop-property-types">
+                <li><a href="apt_property_page.html"><i class="fas fa-building"></i> Apartments</a></li>
+                <li><a href="villas_property_page.html"><i class="fas fa-home"></i> Villas</a></li>
+                <li><a href="townhouse_property_page.html"><i class="fas fa-city"></i> Townhouses</a></li>
+                <li><a href="penthouse_property_page.html"><i class="fas fa-hotel"></i> Penthouses</a></li>
+                <li><a href="commercial_property_page.html"><i class="fas fa-store"></i> Commercial</a></li>
+                <li><a href="all_property_page.html"><i class="fas fa-th-large"></i> See All Properties</a></li>
+            </ul>
+            <h4>Buyer Resources</h4>
+            <ul class="prop-buyer-resources">
+              <li><a href="buyer_guide.html">Buyer's Guide</a></li>
+              <li><a href="mortage.html">Mortgage</a></li>
+              <li><a href="all_property_page.html">Signature by Fortura</a></li>
+            </ul>
+          </div>
+          <div class="prop-dropdown-right">
+            <div class="prop-signature-card">
+              <div class="prop-overlay-text">
+                <div class="prop-signature-title">Signature</div>
+                <h3>Signature Collection</h3>
+                <a href="#" class="prop-signature-btn">Explore Signature</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Rent</a>
+      <div class="prop-dropdown-menu">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-left">
+            <h3>Properties for Rent in Singapore</h3>
+            <h4>Properties by Type</h4>
+            <ul class="prop-property-types">
+              <li><a href="apt_property_page.html"><i class="fas fa-building"></i> Apartments</a></li>
+              <li><a href="villas_property_page.html"><i class="fas fa-home"></i> Villas</a></li>
+              <li><a href="townhouse_property_page.html"><i class="fas fa-city"></i> Townhouses</a></li>
+              <li><a href="penthouse_property_page.html"><i class="fas fa-hotel"></i> Penthouses</a></li>
+              <li><a href="commercial_property_page.html"><i class="fas fa-store"></i> Commercial</a></li>
+              <li><a href="all_property_page.html"><i class="fas fa-th-large"></i> See All Rental Properties</a></li>
+            </ul>
+            <h4>Tenant Resources</h4>
+            <ul class="prop-buyer-resources">
+              <li><a href="tenant_guide.html">Tenant's Guide</a></li>
+              <li><a href="#">Property Management</a></li>
+              <li><a href="#">Rental Laws & Regulations</a></li>
+            </ul>
+          </div>
+          <div class="prop-dropdown-right">
+            <div class="prop-signature-card">
+              <div class="prop-overlay-text">
+                <div class="prop-signature-title">Premium</div>
+                <h3>Luxury Rentals</h3>
+                <a href="all_property_page.html" class="prop-signature-btn">Explore Luxury</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Services</a>
+      <div class="prop-dropdown-menu  services-dropdown">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-services">
+            <h3>Our Services</h3>
+            <div class="prop-services-grid">
+                <div class="prop-service-item">
+                    <div class="prop-service-icon"><i class="fas fa-list"></i></div>
+                    <div class="prop-service-text"><a href="list_property.html">List Your Property</a></div>
+                  </div>
+                <div class="prop-service-item">
+                    <div class="prop-service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="prop-service-text"><a href="mortage.html">Mortgages</a></div>
+                </div>
+                <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-building"></i></div>
+                <div class="prop-service-text"><a href="#">Property Management</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-handshake"></i></div>
+                <div class="prop-service-text"><a href="#">Partner Program</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-exchange-alt"></i></div>
+                <div class="prop-service-text"><a href="#">Currency Exchange</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-home"></i></div>
+                <div class="prop-service-text"><a href="#">Short Term Rentals</a></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="prop-header-right">
+ 
+    <a href="list_property.html" class="list-property-btn">List Your Property</a>
+    <div class="user-menu-container">
+        <div class="user-circle" id="userInitial">U</div>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="index.html" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+</div>
+
+      </header>
+
+     <!-- Mobile Header (hidden by default on desktop) -->
+<div class="prop-mobile-header">
+    <div class="prop-mobile-header-left">
+      <a href="lgdin_hero.html" <span class="prop-logo">Fortura<span class="dot">.</span></span></a>
+    </div>
+    <div class="prop-mobile-header-right">
+      <!-- Mobile User Menu -->
+  <div class="user-menu-container mobile-only">
+    <div class="user-circle" id="mobileUserInitial">?</div>
+    <div class="user-dropdown" id="mobileUserDropdown">
+      <a href="index.html" id="mobileLogoutBtn">Logout</a>
+    </div>
+  </div>
+  
+      <i class="fas fa-bars prop-hamburger" id="prop-hamburger-toggle"></i>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu (toggle visibility with JS or CSS) -->
+  <div class="prop-mobile-menu" id="prop-mobile-menu">
+    <div class="prop-mobile-menu-item" data-target="buySubMenu">
+      Buy <span class="plus">+</span>
+    </div>
+    <div class="prop-submenu" id="buySubMenu">
+      <a href="apt_property_page.html">Apartments</a>
+      <a href="villas_property_page.html">Villas</a>
+      <a href="townhouse_property_page.html">Townhouses</a>
+      <a href="penthouse_property_page.html">Penthouses</a>
+      <a href="commercial_property_page.html">Commercial</a>
+      <a href="all_property_page.html">See All Properties</a>
+      <a href="buyer_guide.html">Buyer's Guide</a>
+      <a href="mortage.html">Mortgage</a>
+      
+    </div>
+    
+  
+    <div class="prop-mobile-menu-item" data-target="rentSubMenu">
+      Rent <span class="plus">+</span>
+    </div>
+    <div class="prop-submenu" id="rentSubMenu">
+        <a href="apt_property_page.html">Apartments</a>
+        <a href="villas_property_page.html">Villas</a>
+        <a href="townhouse_property_page.html">Townhouses</a>
+        <a href="penthouse_property_page.html">Penthouses</a>
+        <a href="commercial_property_page.html">Commercial</a>
+        <a href="all_property_page.html">See All Properties</a>
+        <a href="tenant_guide.html">Tenant's Guide</a>
+  
+    </div>
+  
+    <div class="prop-mobile-menu-item" data-target="servicesSubMenu">
+      Services <span class="plus">+</span>
+    </div>
+    <div class="prop-submenu" id="servicesSubMenu">
+        <a href="list_property.html">List Your Property</a>
+        <a href="mortage.html">Mortgages</a>
+    </div>
+    <a class="prop-mobile-menu-item" href="list_property.html">List Your Property</a>
+  </div>
+  
+  
+      
+    
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="search-input">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Area, project or community">
+            </div>
+            <!-- Property Type -->
+            <div class="dropdown-button">
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+            </div> 
+            <!-- Price -->
+            <div class="dropdown-button">
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+            </div> 
+            <!-- Beds -->
+            <div class="dropdown-button">
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+            </div> 
+             <!-- Size -->
+            <div class="dropdown-button">
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+            </div>
+            <button class="action-button search-button">
+                <i class="fas fa-search"></i> Search
+            </button>
+
+        </div>
+        
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="lgdin_hero.html">Home</a>
+            <span>/</span>
+            <a href="all_property_page.html">Properties for sale in Singapore</a>
+            <span>/</span>
+            <a href="#">Properties for sale in Singapore</a>
+        </div>
+
+        <!-- Listings Header -->
+        <div class="listings-header">
+            <div class="listings-title">
+                <h1>Properties for sale in Singapore</h1>
+            </div>
+            <div class="listings-count">672 listings</div>
+        </div>
+
+        <div class="listings-container">
+            <!-- Property Listings -->
+            <div class="property-listings">
+                <!-- Repeat property cards here -->
+                <!-- Property Card 1 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="" alt="Apartment Interior">
+                        <div class="image-nav">
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="image-count">
+                            <i class="far fa-image"></i> 12
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-price">
+                            <div>USD 735,097</div>
+                            <i class="far fa-heart heart-icon"></i>
+                        </div>
+                        <div class="property-title">Prime Location | Generous Space | High Return on Investment</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> The Signature, Downtown Singapore, Singapore
+                        </div>
+                        <div class="property-features">
+                            <div class="feature"><i class="fas fa-bed"></i> 3</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 3</div>
+                            <div class="feature"><i class="fas fa-expand-arrows-alt"></i> 1,525 sq ft</div>
+                        </div>
+                        <div class="property-description">
+                            The Signature offers an exceptional serviced hotel apartment experience, ideally... 
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-button-secondary">
+                                <i class="far fa-envelope"></i> Book a Viewing
+                            </button>
+                            <button class="action-button-secondary">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </button>
+                            <button class="action-button-secondary whatsapp-button">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property Card 2 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/api/placeholder/400/320" alt="Apartment Interior">
+                        <div class="image-nav">
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="image-count">
+                            <i class="far fa-image"></i> 8
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-price">
+                            <div>USD 558,122</div>
+                            <i class="far fa-heart heart-icon"></i>
+                        </div>
+                        <div class="property-title">Excellent Value | High ROI | Elegantly Furnished</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Act Towers, Opera District, Downtown Singapore, Singapore
+                        </div>
+                        <div class="property-features">
+                            <div class="feature"><i class="fas fa-bed"></i> 1</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 1</div>
+                            <div class="feature"><i class="fas fa-expand-arrows-alt"></i> 610 sq ft</div>
+                        </div>
+                        <div class="property-description">
+                            ACT Towers in Downtown Singapore, an exclusive project by Emaar Properties. Designed... 
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-button-secondary">
+                                <i class="far fa-envelope"></i> Book a Viewing
+                            </button>
+                            <button class="action-button-secondary">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </button>
+                            <button class="action-button-secondary whatsapp-button">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property Card 3 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/api/placeholder/400/320" alt="Apartment Interior">
+                        <div class="image-nav">
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="image-count">
+                            <i class="far fa-image"></i> 15
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-price">
+                            <div>USD 892,450</div>
+                            <i class="far fa-heart heart-icon"></i>
+                        </div>
+                        <div class="property-title">Spacious Layout | Sea View | Premium Amenities</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Marina Arcade, Singapore Marina, Singapore
+                        </div>
+                        <div class="property-features">
+                            <div class="feature"><i class="fas fa-bed"></i> 2</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 2</div>
+                            <div class="feature"><i class="fas fa-expand-arrows-alt"></i> 1,250 sq ft</div>
+                        </div>
+                        <div class="property-description">
+                            Marina Arcade offers luxurious waterfront living with stunning views of the Arabian Gulf... 
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-button-secondary">
+                                <i class="far fa-envelope"></i> Book a Viewing
+                            </button>
+                            <button class="action-button-secondary">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </button>
+                            <button class="action-button-secondary whatsapp-button">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- More Property Cards (4-10) -->
+                <!-- Property Card 4 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/api/placeholder/400/320" alt="Apartment Interior">
+                        <div class="image-nav">
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="image-nav-button">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="image-count">
+                            <i class="far fa-image"></i> 10
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-price">
+                            <div>USD 462,800</div>
+                            <i class="far fa-heart heart-icon"></i>
+                        </div>
+                        <div class="property-title">Investor Deal | Ready to Move | Luxury Finishes</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Emaar Beachfront, Singapore Harbour, Singapore
+                        </div>
+                        <div class="property-features">
+                            <div class="feature"><i class="fas fa-bed"></i> 1</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 1</div>
+                            <div class="feature"><i class="fas fa-expand-arrows-alt"></i> 750 sq ft</div>
+                        </div>
+                        <div class="property-description">
+                            Emaar Beachfront offers premium residences with private beach access and stunning views... 
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-button-secondary">
+                                <i class="far fa-envelope"></i> Book a Viewing
+                            </button>
+                            <button class="action-button-secondary">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </button>
+                            <button class="action-button-secondary whatsapp-button">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="page-button">1</button>
+                    <button class="page-button">2</button>
+                    <button class="page-button">3</button>
+                    <button class="page-button">4</button>
+                    <button class="page-button">5</button>
+                    <button class="page-button">6</button>
+                    <button class="page-button">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sticky Spotlight Properties Section -->
+            <div class="sticky-container">
+                <div class="sticky-spotlight">
+                    <!-- Spotlight Property 1 -->
+                    <div class="spotlight-property">
+                        <img src="image/copen.jpg" alt="copen grand" class="spotlight-image">
+                        <div class="spotlight-badge">Spotlight Property</div>
+                        <div class="spotlight-content">
+                            <div class="spotlight-title">Copen grand </div>
+                            <div class="spotlight-subtitle">By MCL Land</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Spotlight Property 2 -->
+                    <div class="spotlight-property">
+                        <img src="image/capitaland.jpg" alt="The Interlace" class="spotlight-image">
+                        <div class="spotlight-badge">Spotlight Property</div>
+                        <div class="spotlight-content">
+                            <div class="spotlight-title">The Interlace</div>
+                            <div class="spotlight-subtitle">By CapitaLand</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+          <!-- Main Navigation Section -->
+          <div class="footer-navigation">
+            <!-- BUY Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">BUY</h3>
+              <ul class="footer-links">
+                <li><a href="all_property_page.html">Properties for Sale</a></li>
+                <li><a href="buyer_guide.html">Guide to Buying</a></li>
+                <li><a href="all_property_page.html">Signature Collection</a></li>
+                <li><a href="mortage.html">Mortgages</a></li>
+              </ul>
+            </div>
+      
+            <!-- SELL Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">SELL</h3>
+              <ul class="footer-links">
+                <li><a href="list_property.html">List your Property</a></li>
+                <li><a href="/guide-to-selling">Guide to Selling</a></li>
+                <li><a href="book_viewing.html">Book a Valuation</a></li>
+              </ul>
+            </div>
+      
+            <!-- RENT Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">RENT</h3>
+              <ul class="footer-links">
+                <li><a href="all_property_page.html">Properties to Rent</a></li>
+                <li><a href="/guide-to-renting">Guide to Renting</a></li>
+                <li><a href="/short-term-rentals">Short Term Rentals</a></li>
+                <li><a href="/property-management-rent">Property Management</a></li>
+              </ul>
+            </div>
+      
+            <!-- SERVICES Column -->
+            <div class="footer-column">
+              <h3 class="footer-heading">SERVICES</h3>
+              <ul class="footer-links">
+                <li><a href="all_property_page.html">Properties for Sale</a></li>
+                <li><a href="list_property.html">List your Property</a></li>
+                <li><a href="mortage.html">Mortgages</a></li>
+                <li><a href="/currency-exchange-services">Currency Exchange</a></li>
+                <li><a href="/partner-with-provident">Partner with Provident</a></li>
+              </ul>
+            </div>
+      
+          
+          <!-- Bottom Footer Section -->
+          <div class="footer-bottom">
+    
+            <!-- Social Media Links -->
+            <div class="social-links">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <!-- Legal/Settings Section -->
+            <div class="footer-legal">
+              <div class="legal-links">
+                <a href="/privacy-policy">Privacy Policy</a> / 
+                <a href="/terms-conditions">Terms & Conditions</a> / 
+              </div>
+        
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+
+    <script>
+
+
+//hamburger toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".prop-hamburger");
+    const mobileMenu = document.querySelector(".prop-mobile-menu");
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    }
+  });
+
+
+  document.querySelectorAll('.prop-mobile-menu-item[data-target]').forEach(item => {
+  item.addEventListener('click', () => {
+    const targetId = item.getAttribute('data-target');
+    const submenu = document.getElementById(targetId);
+    const plus = item.querySelector('.plus');
+    const isOpen = item.classList.contains("open");
+
+    // Close all submenus
+    document.querySelectorAll('.prop-submenu').forEach(sub => {
+      sub.style.maxHeight = null;
+    });
+
+    // Reset all toggles
+    document.querySelectorAll('.prop-mobile-menu-item[data-target]').forEach(i => {
+      i.classList.remove("open");
+      const plusEl = i.querySelector('.plus');
+      if (plusEl) plusEl.textContent = "+";
+    });
+
+    // Open the clicked one
+    if (!isOpen) {
+      submenu.style.maxHeight = submenu.scrollHeight + "px";
+      item.classList.add("open");
+      if (plus) plus.textContent = "−";
+    }
+  });
+});
+
+
+        // Define API endpoint
+const API_URL = 'https://67ed961b4387d9117bbe13f5.mockapi.io/UID';
+const AREAS_URL = 'singapore_areas.json'; 
+let allProperties = [];
+let areaList = [];
+let filters = {
+    area: "",
+    propertyType: "Apartment",
+    price: "",
+    beds: "",
+    size: ""
+};
+let currentPage = 1;
+const propertiesPerPage = 4;
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+    setupEventListeners();
+});
+
+// Initialize the application
+async function initializeApp() {
+    try {
+        // Fetch all data first
+        const [properties, areas] = await Promise.all([fetchProperties(), fetchAreas()]);
+        allProperties = properties;
+        areaList = areas;
+        
+        // Render the properties
+        renderProperties();
+    } catch (error) {
+        console.error('Initialization error:', error);
+    }
+}
+
+// Fetch area names from JSON file
+async function fetchAreas() {
+    try {
+        const response = await fetch(AREAS_URL);
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching areas:', error);
+        return ["Downtown Singapore", "Singapore Marina", "Singapore Harbour", "Palm Jumeirah", "Business Bay"];
+    }
+}
+
+// Fetch property data from API
+async function fetchProperties() {
+    try {
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        return [];
+    }
+}
+
+// Generate random property based on filters
+function generateProperty(filters) {
+    const area = filters.area ? filters.area : areaList[Math.floor(Math.random() * areaList.length)];
+    const bedrooms = filters.beds ? parseInt(filters.beds) : Math.floor(Math.random() * 4) + 1;
+    const bathrooms = Math.floor(Math.random() * 3) + 1;
+    
+    let minSize = 500;
+    let maxSize = 2000;
+    if (filters.size) {
+        const sizeParts = filters.size.split('-');
+        if (sizeParts.length === 2) {
+            minSize = parseInt(sizeParts[0]);
+            maxSize = parseInt(sizeParts[1]);
+        }
+    }
+    const areaSize = Math.floor(Math.random() * (maxSize - minSize)) + minSize;
+    
+    let minPrice = 700000;
+    let maxPrice = 12000000;
+    if (filters.price) {
+        const priceParts = filters.price.split('-');
+        if (priceParts.length === 2) {
+            minPrice = parseInt(priceParts[0]);
+            maxPrice = parseInt(priceParts[1]);
+        }
+    }
+    const price = Math.floor(Math.random() * (maxPrice - minPrice)) + minPrice;
+    
+    const imageCount = Math.floor(Math.random() * 15) + 5;
+    const id = Math.floor(Math.random() * 10000);
+    
+    // Use address from API data if available, otherwise use placeholder
+    const streetAddresses = allProperties.length > 0 
+        ? allProperties.map(prop => prop.address).filter(addr => addr && addr !== 'Luxury Tower')
+        : ["Palm Avenue", "Marina Boulevard", "Orchard Road", "Bayfront Drive", "Sentosa Cove"];
+    
+    const address = streetAddresses.length > 0
+        ? streetAddresses[Math.floor(Math.random() * streetAddresses.length)]
+        : "Address Pending";
+    
+    const titles = [
+        "Prime Location | Generous Space | High Return on Investment",
+        "Excellent Value | High ROI | Elegantly Furnished",
+        "Spacious Layout | Sea View | Premium Amenities",
+        "Investor Deal | Ready to Move | Luxury Finishes",
+        "Exclusive Unit | Panoramic Views | Modern Design"
+    ];
+    
+    const descriptions = [
+  "A beautifully designed residence in Orchard offering modern interiors, premium finishes, and close proximity to top shopping and dining spots.",
+  "Experience elevated living in this serene Bukit Timah home, featuring spacious layouts, lush greenery, and refined architectural details.",
+  "Stylish city living in Marina Bay with panoramic skyline views, smart home features, and access to exclusive resident amenities.",
+  "This Sentosa Cove property blends luxury and waterfront tranquility, complete with private dock access and resort-style living.",
+  "A sleek, contemporary home in Tanjong Pagar with open-plan living, top-tier appliances, and walkable access to business and cultural hubs.",
+  "Elegant residence in Holland Village featuring floor-to-ceiling windows, private balconies, and walking distance to cafes and MRT.",
+  "Sophisticated duplex in Novena with high ceilings, natural light-filled interiors, and a seamless blend of comfort and modern design.",
+  "Charming home in East Coast with private garden space, spacious family areas, and easy access to coastal parks and top schools.",
+  "Minimalist-inspired apartment in Newton with smart home automation, concierge services, and sweeping city views.",
+  "A quiet sanctuary in Tanglin with timeless architecture, lush surroundings, and a short drive to Orchard Road’s finest retail.",
+  "Contemporary loft in River Valley with premium fittings, open-plan kitchen, and direct connectivity to nightlife and dining.",
+  "Exclusive landed property in Bukit Timah nestled among nature reserves, with multiple living zones and private parking.",
+  "Lavish condo in One North with resort-style pools, co-working lounges, and proximity to tech and research hubs.",
+  "Iconic address in CBD boasting luxury finishes, skyline vistas, and integrated access to MRT and business towers.",
+  "Designer home in Dempsey Hill offering privacy, bespoke interiors, and tranquil greenery just minutes from the city core."
+];
+
+    const totalImages = 35; // adjust based on your actual image count
+
+function getRandomImage() {
+    const randomIndex = Math.floor(Math.random() * totalImages) + 1;
+    return `/assets/hero/h${randomIndex}.jpg`;
+}
+
+    
+    return {
+        id,
+        address,
+        image: getRandomImage(),
+        title: titles[Math.floor(Math.random() * titles.length)],
+        description: descriptions[Math.floor(Math.random() * descriptions.length)],
+        area,
+        bedrooms,
+        bathrooms,
+        areaSize,
+        price,
+        imageCount,
+        propertyType: filters.propertyType || "Apartment"
+    };
+}
+
+// Filter properties based on search criteria and generate enough for pagination
+function filterProperties() {
+    let filteredProperties = [];
+    // Generate enough properties for the pagination (total of 24 properties for 6 pages)
+    for (let i = 0; i < 24; i++) {
+        filteredProperties.push(generateProperty(filters));
+    }
+    return filteredProperties;
+}
+
+// Apply all filters and render properties
+function applyFilters() {
+    currentPage = 1; // Reset to first page when applying new filters
+    renderProperties();
+}
+
+// Render properties with pagination
+function renderProperties() {
+    const propertyContainer = document.querySelector('.property-listings');
+    propertyContainer.innerHTML = ''; // Clear existing properties
+
+    // Regenerate properties if filters are applied
+    allProperties = filterProperties();
+    
+    // Calculate total pages and ensure current page is valid
+    const totalPages = Math.ceil(allProperties.length / propertiesPerPage);
+    if (currentPage > totalPages) currentPage = 1;
+    
+    // Get properties for current page
+    const startIndex = (currentPage - 1) * propertiesPerPage;
+    const endIndex = startIndex + propertiesPerPage;
+    const currentPageProperties = allProperties.slice(startIndex, endIndex);
+    
+    // Render properties for current page
+    currentPageProperties.forEach(property => {
+        // Create the property card
+        const card = document.createElement('div');
+        card.className = 'property-card';
+        
+        const location = `${property.address}, ${property.area}, Singapore`;
+        
+        card.innerHTML = `
+            <div class="property-image">
+                <img src="${property.image}" alt="Property Image">
+                <div class="image-nav">
+                    <div class="image-nav-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="image-nav-button">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="image-count">
+                    <i class="far fa-image"></i> ${property.imageCount}
+                </div>
+            </div>
+            <div class="property-details">
+                <div class="property-price">
+                    <div>USD ${formatPrice(property.price)}</div>
+                </div>
+                <div class="property-title">${property.title}</div>
+                <div class="property-location">
+                    <i class="fas fa-map-marker-alt"></i> ${location}
+                </div>
+                <div class="property-features">
+                    <div class="feature"><i class="fas fa-bed"></i> ${property.bedrooms}</div>
+                    <div class="feature"><i class="fas fa-bath"></i> ${property.bathrooms}</div>
+                    <div class="feature"><i class="fas fa-expand-arrows-alt"></i> ${property.areaSize} sq ft</div>
+                </div>
+                <div class="property-description">
+                    ${property.description} 
+                </div>
+                <div class="property-actions">
+<a href="book_viewing.html" class="action-button-secondary">
+  <i class="far fa-envelope"></i> Book a Viewing
+</a>
+                    <button class="action-button-secondary" data-id="${property.id}">
+                        <i class="fas fa-phone-alt"></i> Call
+                    </button>
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="action-button-secondary whatsapp-button">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+                </div>
+            </div>
+        `;
+        
+        propertyContainer.appendChild(card);
+    });
+    
+    // Render pagination
+    renderPagination(totalPages);
+}
+
+// Render pagination controls
+function renderPagination(totalPages) {
+    const propertyContainer = document.querySelector('.property-listings');
+    
+    // Create pagination div
+    const paginationDiv = document.createElement('div');
+    paginationDiv.className = 'pagination';
+    
+    // Previous button
+    const prevButton = document.createElement('button');
+    prevButton.className = 'page-button' + (currentPage === 1 ? ' disabled' : '');
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderProperties();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    paginationDiv.appendChild(prevButton);
+    
+    // Page number buttons (show max 6 pages)
+    const maxVisiblePages = 6;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    
+    // Adjust start page if we're near the end
+    if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = 'page-button' + (i === currentPage ? ' active' : '');
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+            currentPage = i;
+            renderProperties();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        paginationDiv.appendChild(pageButton);
+    }
+    
+    // Next button
+    const nextButton = document.createElement('button');
+    nextButton.className = 'page-button' + (currentPage === totalPages ? ' disabled' : '');
+    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderProperties();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    paginationDiv.appendChild(nextButton);
+    
+    // Append pagination to container
+    propertyContainer.appendChild(paginationDiv);
+}
+
+// Set up event listeners
+function setupEventListeners() {
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('heart-icon') || e.target.parentElement.classList.contains('heart-icon')) {
+            const heartIcon = e.target.classList.contains('heart-icon') ? e.target : e.target.parentElement;
+            heartIcon.classList.toggle('fas');
+            heartIcon.classList.toggle('far');
+        }
+        
+    });
+
+    // Search input - only store value, don't apply filter yet
+    const searchInput = document.querySelector('.search-input input');
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            // Only update the value in the filter object
+            filters.area = this.value;
+            // Apply filters only if search button is clicked
+            applyFilters();
+        }
+    });
+
+    // Setup dropdown for property type
+    setupDropdown('.dropdown-button:nth-child(2)', [
+        { text: 'Apartment', value: 'Apartment' },
+        { text: 'Villa', value: 'Villa' },
+        { text: 'Townhouse', value: 'Townhouse' },
+        { text: 'Penthouse', value: 'Penthouse' }
+    ], (value) => {
+        filters.propertyType = value;
+        // Don't apply filters yet
+    });
+    
+    // Setup dropdown for price
+    setupDropdown('.dropdown-button:nth-child(3)', [
+        { text: 'Price', value: '' },
+        { text: '$400,000-$800,000', value: '400000-800000' },
+        { text: '$800,000-$1,200,000', value: '800000-1200000' },
+        { text: '$1,200,000-$1,600,000', value: '1200000-1600000' }
+    ], (value) => {
+        filters.price = value;
+        // Don't apply filters yet
+    });
+    
+    // Setup dropdown for beds
+    setupDropdown('.dropdown-button:nth-child(4)', [
+        { text: 'Beds', value: '' },
+        { text: '1', value: '1' },
+        { text: '2', value: '2' },
+        { text: '3', value: '3' },
+        { text: '4+', value: '4' }
+    ], (value) => {
+        filters.beds = value;
+        // Don't apply filters yet
+    });
+    
+    // Setup dropdown for size
+    setupDropdown('.dropdown-button:nth-child(5)', [
+        { text: 'Size', value: '' },
+        { text: '500-1000 sq ft', value: '500-1000' },
+        { text: '1000-2000 sq ft', value: '1000-2000' },
+        { text: '2000-3000 sq ft', value: '2000-3000' },
+        { text: '3000+ sq ft', value: '3000-5000' }
+    ], (value) => {
+        filters.size = value;
+        // Don't apply filters yet
+    });
+
+    // Search button - this is when we actually apply all filters
+    const searchButton = document.querySelector('.search-button');
+    searchButton.addEventListener('click', function() {
+        // Update area filter from input field
+        filters.area = searchInput.value;
+        // Now apply all filters at once
+        applyFilters();
+    });
+}
+
+// Helper function to setup dropdown with items
+function setupDropdown(selector, options, onChange) {
+    const dropdownButton = document.querySelector(selector);
+    if (!dropdownButton) return;
+    
+    // Create dropdown container
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.className = 'dropdown-container';
+    dropdownButton.appendChild(dropdownContainer);
+    
+    // Create dropdown menu
+    const dropdownMenu = document.createElement('div');
+    dropdownMenu.className = 'dropdown-menu';
+    
+    // Add options to dropdown menu
+    options.forEach(option => {
+        const item = document.createElement('div');
+        item.className = 'dropdown-item';
+        item.textContent = option.text;
+        item.dataset.value = option.value;
+        
+        item.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling up
+            dropdownButton.querySelector('span').textContent = option.text;
+            onChange(option.value);
+            dropdownMenu.style.display = 'none';
+        });
+        
+        dropdownMenu.appendChild(item);
+    });
+    
+    dropdownContainer.appendChild(dropdownMenu);
+    
+    // Set up initial text in a span
+    const buttonText = document.createElement('span');
+    buttonText.textContent = options[0].text;
+    dropdownButton.prepend(buttonText);
+    
+    // Toggle dropdown on button click
+    dropdownButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // Close all other dropdowns first
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            if (menu !== dropdownMenu) {
+                menu.style.display = 'none';
+            }
+        });
+        
+        // Toggle current dropdown
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+        dropdownMenu.style.display = 'none';
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input input');
+    const suggestionBox = document.createElement('div');
+    suggestionBox.classList.add('area-suggestions');
+    searchInput.parentElement.appendChild(suggestionBox);
+
+    searchInput.addEventListener('focus', () => {
+        const suggestions = getRandomSuggestions(5);
+        showAreaSuggestions(suggestions, searchInput, suggestionBox);
+    });
+
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const suggestions = areaList.filter(area => area.toLowerCase().includes(searchTerm)).slice(0, 5);
+        showAreaSuggestions(suggestions, searchInput, suggestionBox);
+    });
+
+    suggestionBox.addEventListener('click', (e) => {
+        if (e.target.classList.contains('suggestion-item')) {
+            searchInput.value = e.target.textContent;
+            filters.area = e.target.textContent;
+            suggestionBox.innerHTML = '';
+        }
+    });
+
+    searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            filters.area = searchInput.value;
+            applyFilters();
+        }
+    });
+});
+
+
+//Random area suggestions
+function getRandomSuggestions(count) {
+    const shuffled = [...areaList].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+function showAreaSuggestions(suggestions, inputElement, container) {
+    container.innerHTML = '';
+    suggestions.forEach(area => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item';
+        item.textContent = area;
+        container.appendChild(item);
+    });
+    
+}
+
+
+
+
+// Helper function to format price
+function formatPrice(price) {
+    return price.toLocaleString();
+}
+
+//logout
+let dropdown, mobileDropdown;
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Desktop
+  const userCircle = document.getElementById("userInitial");
+  dropdown = document.getElementById("userDropdown");
+
+  if (userCircle && dropdown) {
+    userCircle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isVisible = dropdown.style.display === "block";
+      dropdown.style.display = isVisible ? "none" : "block";
+      if (mobileDropdown) mobileDropdown.style.display = "none"; // Close mobile dropdown
+    });
+  }
+
+  // Mobile
+  const mobileUserCircle = document.getElementById("mobileUserInitial");
+  mobileDropdown = document.getElementById("mobileUserDropdown");
+
+  if (mobileUserCircle && mobileDropdown) {
+    mobileUserCircle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isVisible = mobileDropdown.style.display === "block";
+      mobileDropdown.style.display = isVisible ? "none" : "block";
+      if (dropdown) dropdown.style.display = "none"; // Close desktop dropdown
+    });
+  }
+
+  // Set initials (optional reuse)
+  const username = localStorage.getItem("username");
+  if (username) {
+    const initial = username.trim().charAt(0).toUpperCase();
+    if (userCircle) userCircle.textContent = initial;
+    if (mobileUserCircle) mobileUserCircle.textContent = initial;
+  }
+});
+
+// Close all dropdowns on outside click
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".user-menu-container")) {
+    if (dropdown) dropdown.style.display = "none";
+    if (mobileDropdown) mobileDropdown.style.display = "none";
+  }
+});
+
+    
+
+
+
+    </script>
+</body>
+</html>

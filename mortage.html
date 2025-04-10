@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>Provident Mortgages</title>
+    <style>
+      html {
+  scroll-behavior: smooth;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+                margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+    position: fixed;
+    width:100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.prop-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.3s;
+    padding-bottom: 25px;
+}
+
+header:hover nav ul li a:hover,
+.scrolled nav ul li a:hover {
+    color: #FF6B35;
+}
+
+nav ul li a.prop-active {
+    color: #FF6B35;
+    border-bottom: 2px solid #FF6B35;
+}
+
+.scrolled nav ul li a.prop-active {
+    color: #FF6B35;
+}
+
+/* Dropdown Menu */
+.prop-dropdown {
+    position: relative;
+}
+
+.prop-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: white;
+    width: 850px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    margin-top: 37px;
+}
+
+.prop-dropdown:hover .prop-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.prop-dropdown-content {
+    display: flex;
+    padding: 20px;
+}
+
+.prop-dropdown-left {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+.prop-dropdown-right {
+    width: 40%;
+}
+
+.prop-dropdown-left h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.prop-dropdown-left h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.prop-property-types,
+.prop-buyer-resources {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.prop-property-types li,
+.prop-buyer-resources li {
+    margin-bottom: 8px;
+}
+
+.prop-property-types li a,
+.prop-buyer-resources li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.prop-property-types li a:hover,
+.prop-buyer-resources li a:hover {
+    color: #FF6B35;
+}
+
+.prop-property-types li a i {
+    margin-right: 8px;
+    color: #666;
+    width: 16px;
+    text-align: center;
+}
+
+/* Signature Card */
+.prop-signature-card {
+    height: 100%;
+    background: url('signature.jpg') no-repeat center center/cover;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 300px;
+}
+
+.prop-overlay-text {
+    padding: 20px;
+    color: white;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding-top: 60px;
+}
+
+.prop-signature-title {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.prop-overlay-text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 5px 0 15px 0;
+}
+
+.prop-signature-btn {
+    display: inline-block;
+    background: #FF6B35;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.prop-signature-btn:hover {
+    background: #e85a20;
+}
+
+/* Service Dropdown */
+.prop-dropdown-services {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.services-dropdown {
+  width: 300px; /* or whatever width you want */
+}
+
+
+.prop-services-grid {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  gap: 10px; /* Optional spacing between items */
+  margin-top: 19px;
+}
+
+.prop-service-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.prop-service-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f4f8;
+    border-radius: 50%;
+}
+
+.prop-service-icon i {
+    color: #555;
+    font-size: 16px;
+}
+
+.prop-service-text a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.prop-service-text a:hover {
+    color: #FF6B35;
+}
+
+
+.prop-header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.user-circle {
+    background-color: #e0e0e0;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  
+.user-menu-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .user-dropdown {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 120px;
+  }
+
+  .user-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+  }
+
+  .user-dropdown a:hover {
+    background-color: #f5f5f5;
+  }
+
+.list-property-btn {
+    background: transparent;
+    text-decoration: none;
+    color: #222;
+    border: 1px solid #222;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Hide mobile header by default */
+.prop-mobile-header,
+.prop-mobile-menu {
+  display: none;
+}
+
+/* Show on small screens only */
+@media (max-width: 425px) {
+  header { /* Add this class to your existing desktop header if not already */
+    display: none;
+  }
+
+  .prop-mobile-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: white;
+    border-bottom: 1px solid #eee;
+  }
+
+  .prop-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0a2342;
+  }
+
+  .prop-logo .dot {
+    color: orange;
+  }
+
+  .prop-mobile-header-right i {
+    font-size: 22px;
+    color: #0a2342;
+    margin-left: 16px;
+    cursor: pointer;
+  }
+
+  .prop-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px; /* ← move it down by 60px from the top of the screen */
+  width: 100%;
+  flex-direction: column;
+  background: white;
+  padding: 0 16px;
+  z-index: 9999;
+}
+
+  .prop-mobile-menu-item {
+    padding: 12px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  .prop-mobile-menu.open {
+    display: flex;
+  }
+
+  .prop-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding-left: 16px;
+    font-size: 15px;
+  }
+  
+  .prop-submenu a {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .prop-submenu a:hover {
+    color: #1a73e8;
+  }
+
+  .prop-mobile-menu-item[href] {
+    text-decoration: none;
+    color: inherit; /* keeps color consistent with div items */
+  }
+  
+}
+
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 8%;
+        }
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .hero-image {
+            width: 50%;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .hero-content {
+            width: 45%;
+        }
+        h1 {
+            color: #00305b;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .bank-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .bank-logo {
+            width: 18%;
+            border: 1px solid #eee;
+            padding: 10px;
+            text-align: center;
+        }
+        .bank-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+        .section-header {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 425px) {
+
+  .container {
+    padding: 16px;
+    padding-top: 20%;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    text-align: left; /* Make sure text doesn't center */
+    gap: 20px;
+  }
+
+  .hero-image,
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-image img {
+    border-radius: 6px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .section-header {
+    font-size: 12px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .bank-logos {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .bank-logo {
+    width: 45%;
+    margin-bottom: 16px;
+    padding: 8px;
+  }
+
+  .bank-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+        /*calculator*/
+        .mortgage-calculator-section {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #f4f8fb;
+            border-radius: 8px;
+        }
+
+        .mortgage-calculator-section h2 {
+            color: #00305b;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .mortgage-calculator-section p {
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .calculator-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .monthly-payment {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .payment-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00305b;
+            margin: 5px 0 20px 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        
+        .primary-button {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 3px solid #e85c23;
+            position: relative;
+            display: inline-block;
+        }
+
+        .secondary-button {
+            background-color: #e85c23;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transform: translateX(100%);
+        }
+
+        @media (max-width: 425px){
+          .secondary-button {
+            background-color: #e85c23;
+            color: white;
+            padding: 5px 10px;
+            max-width: 100px;
+            max-height: 60px;
+            border: none;
+            font-size: 13px; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transform: translateX(15%);
+        }
+
+        }
+
+        .consultation-booking-container * {
+            box-sizing: border-box;
+        }
+        
+        .consultation-booking-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f0f3f7;
+            padding: 40px;
+            min-height: 600px;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .consultation-left-content {
+            flex: 1;
+            padding-right: 80px;
+            padding-top: 40px;
+        }
+        
+        .consultation-right-content {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .consultation-heading {
+            color: #00305b;
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .consultation-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .consultation-features-list {
+            list-style: none;
+            margin-top: 30px;
+            padding-left: 0;
+        }
+        
+        .consultation-feature-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .consultation-orange-circle {
+            background-color: #e85c23;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .consultation-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .consultation-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .consultation-input, 
+        .consultation-textarea, 
+        .consultation-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .consultation-phone-input {
+            display: flex;
+        }
+        
+        .consultation-country-code {
+            width: 80px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .consultation-phone-number {
+            flex: 1;
+        }
+        
+        .consultation-submit-btn {
+            width: 100%;
+            background-color: #e85c23;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .consultation-terms-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .consultation-terms-text a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+.confirmation-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.98);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.confirmation-content {
+  text-align: center;
+  padding: 2rem;
+}
+.confirmation-content svg {
+  margin-bottom: 1rem;
+}
+.confirmation-content h3 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+.confirmation-content p {
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+.close-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.close-btn:hover {
+  background-color: #43a047;
+}
+
+@media (max-width: 425px) {
+  .consultation-booking-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .consultation-left-content {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .consultation-right-content {
+    padding: 20px;
+    box-shadow: none;
+  }
+
+  .consultation-heading {
+    font-size: 26px;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .consultation-description {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .consultation-feature-item {
+    font-size: 14px;
+  }
+
+  .consultation-orange-circle {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .consultation-form-group {
+    margin-bottom: 15px;
+  }
+
+  .consultation-label {
+    font-size: 13px;
+  }
+
+  .consultation-input,
+  .consultation-textarea,
+  .consultation-select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .consultation-country-code {
+    width: 65px;
+  }
+
+  .consultation-submit-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .consultation-terms-text {
+    font-size: 11px;
+    padding: 0 5px;
+  }
+}
+
+
+
+   
+        /*Reviews*/
+
+ .testimonials-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .testimonials-header {
+    margin-bottom: 30px;
+  }
+  
+  .testimonials-title {
+    font-size: 32px;
+    color: #0c2b5a;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .testimonials-subtitle {
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .testimonials-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .testimonials-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0;
+  }
+  
+  .testimonials-card {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 25px;
+    overflow: hidden;
+  }
+  
+  .testimonials-reviewer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .testimonials-reviewer-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+  }
+  
+  .testimonials-reviewer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .testimonials-reviewer-info h4 {
+    color: #0c2b5a;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .testimonials-reviewer-info p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .testimonials-stars {
+    color: #ff8c1a;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .testimonials-title-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .testimonials-content {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .testimonials-slide {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .testimonials-card {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .testimonials-slide > .testimonials-card:not(:first-child) {
+      display: none;
+    }
+  }
+  
+
+  /*footer*/
+  .footer {
+    background-color: #031b3a;
+    color: #ffffff;
+    padding: 50px 0 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Main Navigation Section */
+  .footer-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .footer-column {
+    width: 16%;
+    min-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #cccccc;
+  }
+  
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Logo Section */
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  /* Social Media Links */
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+  }
+  
+  .social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Legal/Settings Section */
+  
+  .legal-links {
+    margin-bottom: 20px;
+  }
+  
+  .legal-links a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+    
+    </style>
+</head>
+<body>
+    <header>
+        <a href="lgdin_hero.html" class="prop-logo">Fortura.</a>
+<nav>
+  <ul>
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Buy</a>
+      <div class="prop-dropdown-menu">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-left">
+            <h3>Properties for Sale in Singapore</h3>
+            <h4>Properties by Type</h4>
+            <ul class="prop-property-types">
+                <li><a href="apt_property_page.html"><i class="fas fa-building"></i> Apartments</a></li>
+                <li><a href="villas_property_page.html"><i class="fas fa-home"></i> Villas</a></li>
+                <li><a href="townhouse_property_page.html"><i class="fas fa-city"></i> Townhouses</a></li>
+                <li><a href="penthouse_property_page.html"><i class="fas fa-hotel"></i> Penthouses</a></li>
+                <li><a href="commercial_property_page.html"><i class="fas fa-store"></i> Commercial</a></li>
+                <li><a href="all_property_page.html"><i class="fas fa-th-large"></i> See All Properties</a></li>
+            </ul>
+            <h4>Buyer Resources</h4>
+            <ul class="prop-buyer-resources">
+              <li><a href="buyer_guide.html">Buyer's Guide</a></li>
+              <li><a href="mortage.html">Mortgage</a></li>
+              <li><a href="all_property_page.html">Signature by Fortura</a></li>
+            </ul>
+          </div>
+          <div class="prop-dropdown-right">
+            <div class="prop-signature-card">
+              <div class="prop-overlay-text">
+                <div class="prop-signature-title">Signature</div>
+                <h3>Signature Collection</h3>
+                <a href="#" class="prop-signature-btn">Explore Signature</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Rent</a>
+      <div class="prop-dropdown-menu">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-left">
+            <h3>Properties for Rent in Singapore</h3>
+            <h4>Properties by Type</h4>
+            <ul class="prop-property-types">
+              <li><a href="all_property_page.html"><i class="fas fa-building"></i> Apartments</a></li>
+              <li><a href="villas_property_page.html"><i class="fas fa-home"></i> Villas</a></li>
+              <li><a href="townhouse_property_page.html"><i class="fas fa-city"></i> Townhouses</a></li>
+              <li><a href="penthouse_property_page.html"><i class="fas fa-hotel"></i> Penthouses</a></li>
+              <li><a href="commercial_property_page.html"><i class="fas fa-store"></i> Commercial</a></li>
+              <li><a href="all_property_page.html"><i class="fas fa-th-large"></i> See All Rental Properties</a></li>
+            </ul>
+            <h4>Tenant Resources</h4>
+            <ul class="prop-buyer-resources">
+              <li><a href="tenant_guide.html">Tenant's Guide</a></li>
+              <li><a href="#">Property Management</a></li>
+              <li><a href="#">Rental Laws & Regulations</a></li>
+            </ul>
+          </div>
+          <div class="prop-dropdown-right">
+            <div class="prop-signature-card">
+              <div class="prop-overlay-text">
+                <div class="prop-signature-title">Premium</div>
+                <h3>Luxury Rentals</h3>
+                <a href="#" class="prop-signature-btn">Explore Luxury</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="prop-nav-item prop-dropdown">
+      <a href="#">Services</a>
+      <div class="prop-dropdown-menu  services-dropdown">
+        <div class="prop-dropdown-content">
+          <div class="prop-dropdown-services">
+            <h3>Our Services</h3>
+            <div class="prop-services-grid">
+                <div class="prop-service-item">
+                    <div class="prop-service-icon"><i class="fas fa-list"></i></div>
+                    <div class="prop-service-text"><a href="list_property.html">List Your Property</a></div>
+                  </div>
+                <div class="prop-service-item">
+                    <div class="prop-service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="prop-service-text"><a href="mortage.html">Mortgages</a></div>
+                </div>
+                <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-building"></i></div>
+                <div class="prop-service-text"><a href="#">Property Management</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-handshake"></i></div>
+                <div class="prop-service-text"><a href="#">Partner Program</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-exchange-alt"></i></div>
+                <div class="prop-service-text"><a href="#">Currency Exchange</a></div>
+              </div>
+              <div class="prop-service-item">
+                <div class="prop-service-icon"><i class="fas fa-home"></i></div>
+                <div class="prop-service-text"><a href="#">Short Term Rentals</a></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="prop-header-right">
+    <a href="list_property.html" class="list-property-btn">List Your Property</a>
+    <div class="user-menu-container">
+      <div class="user-circle" id="userInitial">U</div>
+      <div class="user-dropdown" id="userDropdown">
+        <a href="index.html" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+</div>
+
+      </header>
+
+       <!-- Mobile Header (hidden by default on desktop) -->
+<div class="prop-mobile-header">
+  <div class="prop-mobile-header-left">
+    <a href="lgdin_hero.html" <span class="prop-logo">Fortura<span class="dot">.</span></span></a>
+  </div>
+  <div class="prop-mobile-header-right">
+    <!-- Mobile User Menu -->
+<div class="user-menu-container mobile-only">
+  <div class="user-circle" id="mobileUserInitial">?</div>
+  <div class="user-dropdown" id="mobileUserDropdown">
+    <a href="index.html" id="mobileLogoutBtn">Logout</a>
+  </div>
+</div>
+
+    <i class="fas fa-bars prop-hamburger" id="prop-hamburger-toggle"></i>
+  </div>
+</div>
+
+<!-- Mobile Menu (toggle visibility with JS or CSS) -->
+<div class="prop-mobile-menu" id="prop-mobile-menu">
+  <div class="prop-mobile-menu-item" data-target="buySubMenu">
+    Buy <span class="plus">+</span>
+  </div>
+  <div class="prop-submenu" id="buySubMenu">
+    <a href="apt_property_page.html">Apartments</a>
+    <a href="villas_property_page.html">Villas</a>
+    <a href="townhouse_property_page.html">Townhouses</a>
+    <a href="penthouse_property_page.html">Penthouses</a>
+    <a href="commercial_property_page.html">Commercial</a>
+    <a href="all_property_page.html">See All Properties</a>
+    <a href="buyer_guide.html">Buyer's Guide</a>
+    <a href="mortage.html">Mortgage</a>
+    
+  </div>
+  
+
+  <div class="prop-mobile-menu-item" data-target="rentSubMenu">
+    Rent <span class="plus">+</span>
+  </div>
+  <div class="prop-submenu" id="rentSubMenu">
+      <a href="apt_property_page.html">Apartments</a>
+      <a href="villas_property_page.html">Villas</a>
+      <a href="townhouse_property_page.html">Townhouses</a>
+      <a href="penthouse_property_page.html">Penthouses</a>
+      <a href="commercial_property_page.html">Commercial</a>
+      <a href="all_property_page.html">See All Properties</a>
+      <a href="tenant_guide.html">Tenant's Guide</a>
+
+  </div>
+
+  <div class="prop-mobile-menu-item" data-target="servicesSubMenu">
+    Services <span class="plus">+</span>
+  </div>
+  <div class="prop-submenu" id="servicesSubMenu">
+      <a href="list_property.html">List Your Property</a>
+      <a href="mortage.html">Mortgages</a>
+  </div>
+  <a class="prop-mobile-menu-item" href="list_property.html">List Your Property</a>
+</div>
+
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="image/business.jpg" alt="Business professionals shaking hands in office">
+            </div>
+            <div class="hero-content">
+                <h1>Why Mortgages With Provident?</h1>
+                <p>Premier Property Finance has over 10+ years of experience in the United Arab Emirates.</p>
+                <p>If you're a property owner in the UAE or contemplating financing for new purchases or your existing property, you're in for a treat! Our service offers comprehensive research and top-notch financial solutions tailored to your unique needs.</p>
+                <p>Whether you're expanding your property portfolio or seeking finance options for your current property, our expert insights and exceptional financial services are designed to ease your real estate journey. Premier Finance will provide you with tailored solutions from fully qualified advisors as well as access to low and competitive rates, transparent mortgage process and access to a number of Home Loan Programs.</p>
+            </div>
+        </div>
+        
+        <div class="bank-section">
+            <p class="section-header">CONNECTING YOU WITH OVER 20 MAJOR BANKS IN SINGAPORE</p>
+            <div class="bank-logos">
+                <div class="bank-logo">
+                    <img src="image/DBS-Bank-logo.png" alt="DBS Bank">
+                </div>
+                <div class="bank-logo">
+                    <img src="image/HSBC-Logo.png" alt="HSBC">
+                </div>
+                <div class="bank-logo">
+                    <img src="image/Citibank-Logo.png" alt="ADIB">
+                </div>
+                <div class="bank-logo">
+                    <img src="image/OCBC-Bank-Logo.jpg" alt="Mashreq">
+                </div>
+                <div class="bank-logo">
+                    <img src="image/uob3213.jpg" alt="FAB">
+                </div>
+            </div>
+        </div>
+        <section class="mortgage-calculator-section">
+            <h2>Mortgage Calculator</h2>
+            <p>Start the effortless journey of listing your property with us, step by step.</p>
+            
+            <div class="calculator-form" >
+                <div class="input-group">
+                    <label>Total Price (SGD)</label>
+                    <input type="number" id="totalPrice" value="1000000" min="0">
+                </div>
+                
+                <div class="input-group">
+                    <label>Down Payment (%)</label>
+                    <input type="number" id="downPayment" value="25" min="0" max="100">
+                </div>
+                
+                <div class="input-group">
+                    <label>Interest Rate (%)</label>
+                    <input type="number" id="interestRate" value="3.75" min="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label>Loan Period Yearly</label>
+                    <input type="number" id="loanPeriod" value="25" min="1" max="50">
+                </div>
+            </div>
+            
+            <div class="result">
+                <div class="monthly-payment">Monthly Payments</div>
+                <div class="payment-amount" id="paymentResult">SGD 3,857.71 /month</div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#cnslt" class="primary-button">Apply For Home Loan</a>
+                <a href="#cnslt" class="secondary-button">Get a free consultation</a>
+            </div>
+        </section>
+
+    </div>
+    <section class="consultation-booking-container" id="cnslt">
+        <div class="consultation-left-content">
+            <h2 class="consultation-heading">Book your free consultation today</h2>
+            <p class="consultation-description" >Navigating Singapore estate? Trust our dedicated team for expert mortgage advice and safeguard your interests throughout the buying or refinancing journey.</p>
+            
+            <ul class="consultation-features-list">
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    Finance up to 79.5% of Your Property Purchase
+                </li>
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    All-Time-Low Fixed Margin of 1.03%
+                </li>
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    Speedy Property Loan Approval
+                </li>
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    Time-Low Fixed Rate of 2.99%
+                </li>
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    Exclusive Bank-Processing Discounts for Handover Finance
+                </li>
+                <li class="consultation-feature-item">
+                    <div class="consultation-orange-circle">✓</div>
+                    Reduced Interest Rates
+                </li>
+            </ul>
+        </div>
+        
+        <div class="consultation-right-content">
+          <form id="consultationForm" class="consultation-form" novalidate>
+            <div class="consultation-form-group">
+              <label class="consultation-label" for="consultation-name">Name</label>
+              <input type="text" id="consultation-name" class="consultation-input" placeholder="Name">
+              <span id="nameError" class="error-message"></span>
+            </div>
+          
+            <div class="consultation-form-group">
+              <label class="consultation-label" for="consultation-email">Email</label>
+              <input type="email" id="consultation-email" class="consultation-input" placeholder="Email">
+              <span id="emailError" class="error-message"></span>
+            </div>
+          
+            <div class="consultation-form-group">
+              <label class="consultation-label" for="consultation-phone">Phone</label>
+              <div class="consultation-phone-input">
+                <div class="consultation-country-code">
+                  <img src="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/sg.svg" width="20" height="15" alt="UAE flag"> +91
+                </div>
+                <input type="tel" id="consultation-phone" class="consultation-input consultation-phone-number">
+              </div>
+              <span id="phoneError" class="error-message"></span>
+            </div>
+          
+            <div class="consultation-form-group">
+              <label class="consultation-label" for="consultation-language">Preferred Language</label>
+              <select id="consultation-language" class="consultation-select">
+                <option>English</option>
+                <option>Arabic</option>
+                <option>Hindi</option>
+                <option>Urdu</option>
+              </select>
+            </div>
+          
+            <div class="consultation-form-group">
+              <label class="consultation-label" for="consultation-message">Message</label>
+              <textarea id="consultation-message" class="consultation-textarea" rows="4" placeholder="Share any additional information"></textarea>
+            </div>
+          
+            <button type="submit" class="consultation-submit-btn">Submit Details</button>
+          
+            <p class="consultation-terms-text">
+              By clicking Submit, you agree to our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+            </p>
+          </form>
+          
+          <!-- Confirmation Popup -->
+          <div id="confirmationMessage" class="confirmation-message" style="display: none;">
+            <div class="confirmation-content">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <h3>Thank you for reaching out!</h3>
+              <p>Our team will contact you shortly to discuss your real estate needs.</p>
+              <button id="closeConfirmation" class="close-btn">Close</button>
+            </div>
+          </div>
+          
+        </div>
+    </section>
+
+    
+<!-- review  -->
+
+<section class="testimonials-section">
+    <div class="testimonials-header">
+      <h2 class="testimonials-title">Why Our Clients Trust Us</h2>
+      <p class="testimonials-subtitle">Discover what our customers are saying about their experiences.</p>
+    </div>
+    
+    <div class="testimonials-container">
+      <div class="testimonials-track">
+        <!-- Slide 1 -->
+        <div class="testimonials-slide">
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="M. Zakariya">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Ranjan</h4>
+                <p>9 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Found the Perfect Investment Property!</h3>
+            <p class="testimonials-content">Even though I'm an experienced investor, trying to invest in Singapore property for the first time was overwhelming. I was lost in a sea of options and di... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="K. Ashwin">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Advaith</h4>
+                <p>10 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">I'm Living in a Perfect Family Home!</h3>
+            <p class="testimonials-content">Moving to Singapore with my wife and two kids was a huge change, and finding a home for my family was my top priority but also a big headache. Provident R... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Sanjay</h4>
+                <p>11 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Smart Investment Advice for a First-Time Buyer</h3>
+            <p class="testimonials-content">As a first-time property buyer, I was pretty confused and didn't know where to start. Provident Real Estate's agents were incredibly knowledgeable and understood exactly what I was looking for. They showed me several neighborhoods with high-potential projects and great returns. Their advice and insights were spot-on, helping me make a smart investment decision. Provident is the go-to agency for investors in Singapore. Their expertise is second to none. </p>
+          </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="testimonials-slide">
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="J. Miller">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Adithya</h4>
+                <p>8 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Exceptional Customer Service</h3>
+            <p class="testimonials-content">I've worked with several real estate agencies before, but the level of service I received from Provident was truly exceptional. The team went above and beyond to understand my needs and find properties that matched my requirements perfectly. Their market knowledge is impressive... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="S. Ahmed">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Yuga</h4>
+                <p>7 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★☆</div>
+            <h3 class="testimonials-title-text">Smooth Property Transaction</h3>
+            <p class="testimonials-content">The buying process was smoother than I expected. My agent handled all the paperwork efficiently and kept me informed at every step. They negotiated a great price for my new apartment and I couldn't be happier with the outcome... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="L. Zhang">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Rohit</h4>
+                <p>6 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Professional and Reliable Service</h3>
+            <p class="testimonials-content">As an international investor, I needed a reliable partner in Singapore. Provident's team was professional from start to finish. They provided detailed market analyses and helped me find an investment property with great ROI potential. I highly recommend their services! </p>
+          </div>
+        </div>
+        
+        <!-- Clone of Slide 1 for infinite loop effect -->
+        <div class="testimonials-slide">
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="M. Zakariya">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Ranjan</h4>
+                <p>9 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Found the Perfect Investment Property!</h3>
+            <p class="testimonials-content">Even though I'm an experienced investor, trying to invest in Singapore property for the first time was overwhelming. I was lost in a sea of options and di... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="K. Ashwin">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Advaith</h4>
+                <p>10 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">I'm Living in a Perfect Family Home!</h3>
+            <p class="testimonials-content">Moving to Singapore with my wife and two kids was a huge change, and finding a home for my family was my top priority but also a big headache. Provident R... </p>
+          </div>
+          
+          <div class="testimonials-card">
+            <div class="testimonials-reviewer">
+              <div class="testimonials-reviewer-image">
+                <img src="user.png" alt="Poulin">
+              </div>
+              <div class="testimonials-reviewer-info">
+                <h4>Sanjay</h4>
+                <p>11 months ago</p>
+              </div>
+            </div>
+            <div class="testimonials-stars">★★★★★</div>
+            <h3 class="testimonials-title-text">Smart Investment Advice for a First-Time Buyer</h3>
+            <p class="testimonials-content">As a first-time property buyer, I was pretty confused and didn't know where to start. Provident Real Estate's agents were incredibly knowledgeable and understood exactly what I was looking for. They showed me several neighborhoods with high-potential projects and great returns. Their advice and insights were spot-on, helping me make a smart investment decision. Provident is the go-to agency for investors in Singapore. Their expertise is second to none. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Main Navigation Section -->
+      <div class="footer-navigation">
+        <!-- BUY Column -->
+        <div class="footer-column">
+          <h3 class="footer-heading">BUY</h3>
+          <ul class="footer-links">
+            <li><a href="all_property_page.html">Properties for Sale</a></li>
+            <li><a href="buyer_guide.html">Guide to Buying</a></li>
+            <li><a href="all_property_page.html">Signature Collection</a></li>
+            <li><a href="mortage.html">Mortgages</a></li>
+          </ul>
+        </div>
+  
+        <!-- SELL Column -->
+        <div class="footer-column">
+          <h3 class="footer-heading">SELL</h3>
+          <ul class="footer-links">
+            <li><a href="list_property.html">List your Property</a></li>
+            <li><a href="list_property.html">Guide to Selling</a></li>
+            <li><a href="book_viewing.html">Book a Valuation</a></li>
+          </ul>
+        </div>
+  
+        <!-- RENT Column -->
+        <div class="footer-column">
+          <h3 class="footer-heading">RENT</h3>
+          <ul class="footer-links">
+            <li><a href="all_property_page.html">Properties to Rent</a></li>
+            <li><a href="/guide-to-renting">Guide to Renting</a></li>
+            <li><a href="/short-term-rentals">Short Term Rentals</a></li>
+            <li><a href="/property-management-rent">Property Management</a></li>
+          </ul>
+        </div>
+  
+        <!-- SERVICES Column -->
+        <div class="footer-column">
+          <h3 class="footer-heading">SERVICES</h3>
+          <ul class="footer-links">
+            <li><a href="all_property_page.html">Properties for Sale</a></li>
+            <li><a href="list_property.html">List your Property</a></li>
+            <li><a href="mortage.html">Mortgages</a></li>
+            <li><a href="/currency-exchange-services">Currency Exchange</a></li>
+            <li><a href="/partner-with-provident">Partner with Provident</a></li>
+          </ul>
+        </div>
+  
+      
+      <!-- Bottom Footer Section -->
+      <div class="footer-bottom">
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <!-- Legal/Settings Section -->
+        <div class="footer-legal">
+          <div class="legal-links">
+            <a href="/privacy-policy">Privacy Policy</a> / 
+            <a href="/terms-conditions">Terms & Conditions</a> / 
+          </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    
+
+    
+    <script>
+        //logout
+  let dropdown, mobileDropdown;
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Desktop
+  const userCircle = document.getElementById("userInitial");
+  dropdown = document.getElementById("userDropdown");
+
+  if (userCircle && dropdown) {
+    userCircle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isVisible = dropdown.style.display === "block";
+      dropdown.style.display = isVisible ? "none" : "block";
+      if (mobileDropdown) mobileDropdown.style.display = "none"; // Close mobile dropdown
+    });
+  }
+
+  // Mobile
+  const mobileUserCircle = document.getElementById("mobileUserInitial");
+  mobileDropdown = document.getElementById("mobileUserDropdown");
+
+  if (mobileUserCircle && mobileDropdown) {
+    mobileUserCircle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isVisible = mobileDropdown.style.display === "block";
+      mobileDropdown.style.display = isVisible ? "none" : "block";
+      if (dropdown) dropdown.style.display = "none"; // Close desktop dropdown
+    });
+  }
+
+  //profile
+
+  const username = localStorage.getItem("username");
+  if (username) {
+    const initial = username.trim().charAt(0).toUpperCase();
+    if (userCircle) userCircle.textContent = initial;
+    if (mobileUserCircle) mobileUserCircle.textContent = initial;
+  }
+});
+
+// Close all dropdowns on outside click
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".user-menu-container")) {
+    if (dropdown) dropdown.style.display = "none";
+    if (mobileDropdown) mobileDropdown.style.display = "none";
+  }
+});
+
+//hamburger toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".prop-hamburger");
+    const mobileMenu = document.querySelector(".prop-mobile-menu");
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    }
+  });
+
+
+  document.querySelectorAll('.prop-mobile-menu-item[data-target]').forEach(item => {
+  item.addEventListener('click', () => {
+    const targetId = item.getAttribute('data-target');
+    const submenu = document.getElementById(targetId);
+    const plus = item.querySelector('.plus');
+    const isOpen = item.classList.contains("open");
+
+    // Close all submenus
+    document.querySelectorAll('.prop-submenu').forEach(sub => {
+      sub.style.maxHeight = null;
+    });
+
+    // Reset all toggles
+    document.querySelectorAll('.prop-mobile-menu-item[data-target]').forEach(i => {
+      i.classList.remove("open");
+      const plusEl = i.querySelector('.plus');
+      if (plusEl) plusEl.textContent = "+";
+    });
+
+    // Open the clicked one
+    if (!isOpen) {
+      submenu.style.maxHeight = submenu.scrollHeight + "px";
+      item.classList.add("open");
+      if (plus) plus.textContent = "−";
+    }
+  });
+});
+
+
+
+  // Get all required elements
+  const totalPriceInput = document.getElementById('totalPrice');
+        const downPaymentInput = document.getElementById('downPayment');
+        const interestRateInput = document.getElementById('interestRate');
+        const loanPeriodInput = document.getElementById('loanPeriod');
+        const paymentResult = document.getElementById('paymentResult');
+        
+        // Function to format number as SGD
+        function formatSGD(number) {
+            return new Intl.NumberFormat('en-SG', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(number);
+        }
+        
+        // Function to calculate mortgage
+        function calculateMortgage() {
+            // Get input values
+            const price = parseFloat(totalPriceInput.value);
+            const downPaymentPercent = parseFloat(downPaymentInput.value);
+            const interestRate = parseFloat(interestRateInput.value);
+            const loanYears = parseInt(loanPeriodInput.value);
+            
+            // Calculate loan amount after down payment
+            const downPaymentAmount = price * (downPaymentPercent / 100);
+            const loanAmount = price - downPaymentAmount;
+            
+            // Convert annual interest rate to monthly and decimal form
+            const monthlyInterest = interestRate / 100 / 12;
+            
+            // Convert loan period from years to months
+            const loanMonths = loanYears * 12;
+            
+            // Calculate monthly payment using the mortgage formula
+            let monthlyPayment;
+            if (interestRate === 0) {
+                monthlyPayment = loanAmount / loanMonths;
+            } else {
+                monthlyPayment = loanAmount * 
+                    (monthlyInterest * Math.pow(1 + monthlyInterest, loanMonths)) / 
+                    (Math.pow(1 + monthlyInterest, loanMonths) - 1);
+            }
+            
+            // Update the result with SGD formatting
+            paymentResult.textContent = `SGD ${formatSGD(monthlyPayment)} /month`;
+        }
+        
+        // Add event listeners to all inputs
+        totalPriceInput.addEventListener('input', calculateMortgage);
+        downPaymentInput.addEventListener('input', calculateMortgage);
+        interestRateInput.addEventListener('input', calculateMortgage);
+        loanPeriodInput.addEventListener('input', calculateMortgage);
+        
+        // Calculate on page load
+        calculateMortgage();
+
+
+
+//Review
+
+const testimonialsTrack = document.querySelector('.testimonials-track');
+    const testimonialsSlides = Array.from(document.querySelectorAll('.testimonials-slide'));
+    
+    let currentIndex = 0;
+let slideWidth = testimonialsSlides[0].getBoundingClientRect().width;
+
+// Update slideWidth on resize
+window.addEventListener('resize', () => {
+  slideWidth = testimonialsSlides[0].getBoundingClientRect().width;
+  setSlidePosition();
+});
+    
+    // Set position
+    function setSlidePosition() {
+      testimonialsTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+    
+    // Move to next slide with infinite loop effect
+    function moveToNextSlide() {
+      currentIndex++;
+      testimonialsTrack.style.transition = 'transform 0.5s ease';
+      setSlidePosition();
+      
+      // When we reach the clone, jump to the first slide without transition
+      if (currentIndex === testimonialsSlides.length - 1) {
+        setTimeout(() => {
+          testimonialsTrack.style.transition = 'none';
+          currentIndex = 0;
+          setSlidePosition();
+        }, 500); // Wait for the transition to complete
+      }
+    }
+    
+    // Auto scroll
+    function startAutoScroll() {
+      return setInterval(() => {
+        moveToNextSlide();
+      }, 3000); // Change slide every 5 seconds
+    }
+    
+    // Initialize carousel
+    setSlidePosition();
+    let autoScrollInterval = startAutoScroll();
+    
+    // Pause auto-scroll when user interacts with the carousel
+    testimonialsTrack.addEventListener('mouseenter', () => {
+      clearInterval(autoScrollInterval);
+    });
+    
+    // Resume auto-scroll when user stops interacting
+    testimonialsTrack.addEventListener('mouseleave', () => {
+      autoScrollInterval = startAutoScroll();
+    });
+    
+    // Reset transition after it's done (for seamless looping)
+    testimonialsTrack.addEventListener('transitionend', () => {
+      if (currentIndex === testimonialsSlides.length - 1) {
+        testimonialsTrack.style.transition = 'none';
+        currentIndex = 0;
+        setSlidePosition();
+        setTimeout(() => {
+          testimonialsTrack.style.transition = 'transform 0.5s ease';
+        }, 10);
+      }
+    });
+
+//form validation
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const consultationForm = document.getElementById('consultationForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    const closeConfirmation = document.getElementById('closeConfirmation');
+
+    function validateForm() {
+      let isValid = true;
+
+      const nameInput = document.getElementById('consultation-name');
+      const emailInput = document.getElementById('consultation-email');
+      const phoneInput = document.getElementById('consultation-phone');
+
+      document.querySelectorAll('.error-message').forEach(error => {
+        error.textContent = '';
+      });
+
+      if (nameInput.value.trim() === '') {
+        document.getElementById('nameError').textContent = 'Name is required';
+        isValid = false;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput.value.trim())) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email address';
+        isValid = false;
+      }
+
+      const phonePattern = /^\d{9,15}$/;
+      if (!phonePattern.test(phoneInput.value.trim())) {
+        document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    consultationForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (validateForm()) {
+        confirmationMessage.style.display = 'flex';
+        consultationForm.reset();
+      }
+    });
+
+    closeConfirmation.addEventListener('click', function () {
+      confirmationMessage.style.display = 'none';
+    });
+  });
+
+
+
+
+
+    </script>
+</body>
+</html>
