@@ -538,11 +538,13 @@
                     </select>
                   </div>
                 </div>
+                <span id="languageError" class="error-message"></span>
               </div>
               <div class="form-row full-width">
                 <div class="form-group">
                   <label for="address">Property Address</label>
                   <input type="text" id="address" name="address" placeholder="Property Address">
+                  <span id="addressError" class="error-message"></span>
                 </div>
               </div>
               <div class="form-row">
@@ -556,6 +558,7 @@
                       <option value="House">House</option>
                     </select>
                   </div>
+                  <span id="propertyTypeError" class="error-message"></span>
                 </div>
               </div>
               <div class="form-row">
@@ -568,6 +571,7 @@
                       <option value="Sale">Sale</option>
                     </select>
                   </div>
+                  <span id="purposeError" class="error-message"></span>
                 </div>
                 <div class="form-group">
                   <label for="bedroom">Bedroom</label>
@@ -580,12 +584,14 @@
                       <option value="4+">4+</option>
                     </select>
                   </div>
-                </div>
+                  <span id="bedroomError" class="error-message"></span>
+                </div>  
               </div>
               <div class="form-row full-width">
                 <div class="form-group">
                   <label for="message">Message</label>
-                  <textarea id="message" name="message" placeholder="Share any additional information"></textarea>
+                  <textarea id="message" name="message" placeholder="Share any additional information" ></textarea>
+                  <span id="messageError" class="error-message"></span>
                 </div>
               </div>
               <button type="submit" class="submit-btn">Submit Details</button>
@@ -837,97 +843,96 @@ document.addEventListener("click", (e) => {
       }
     });
 
-    //contact form
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   const confirmationMessage = document.getElementById('confirmationMessage');
   const closeConfirmation = document.getElementById('closeConfirmation');
- 
-  // Form validation function
+
   function validateForm() {
     let isValid = true;
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
-   
-    // Clear previous error messages
+    const addressInput = document.getElementById('address');
+    const languageSelect = document.getElementById('language');
+    const propertyTypeSelect = document.getElementById('propertyType');
+    const purposeSelect = document.getElementById('purpose');
+    const bedroomSelect = document.getElementById('bedroom');
+    const messageTextarea = document.getElementById('message');
+
+    // Clear previous errors
     document.querySelectorAll('.error-message').forEach(error => {
       error.textContent = '';
     });
-   
-    // Validate name
+
     if (nameInput.value.trim() === '') {
       document.getElementById('nameError').textContent = 'Name is required';
       isValid = false;
     }
-   
-    // Validate email
+
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(emailInput.value)) {
       document.getElementById('emailError').textContent = 'Please enter a valid email address';
       isValid = false;
     }
-   
-    // Validate phone
+
     const phonePattern = /^\d{9,15}$/;
     if (!phonePattern.test(phoneInput.value)) {
       document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
       isValid = false;
     }
-   
+
+    if (addressInput.value.trim() === '') {
+      document.getElementById('addressError').textContent = 'Address is required';
+      isValid = false;
+    }
+
+    if (!languageSelect.value) {
+      document.getElementById('languageError').textContent = 'Please select a language';
+      isValid = false;
+    }
+
+    if (!propertyTypeSelect.value) {
+      document.getElementById('propertyTypeError').textContent = 'Please select a property type';
+      isValid = false;
+    }
+
+    if (!purposeSelect.value) {
+      document.getElementById('purposeError').textContent = 'Please select the purpose';
+      isValid = false;
+    }
+
+    if (!bedroomSelect.value) {
+      document.getElementById('bedroomError').textContent = 'Please select number of bedrooms';
+      isValid = false;
+    }
+
+    if (messageTextarea.value.trim() === '') {
+      document.getElementById('messageError').textContent = 'Message is required';
+      isValid = false;
+    }
+
     return isValid;
   }
- 
-  // Form submission handler
+
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-   
     if (validateForm()) {
-      // In a real application, you would send the form data to the server here
-     
-      // Show confirmation message
       confirmationMessage.style.display = 'flex';
-     
-      // Reset form
       contactForm.reset();
     }
   });
- 
-  // Close confirmation message
+
   closeConfirmation.addEventListener('click', function() {
     confirmationMessage.style.display = 'none';
   });
- 
-  // Real-time validation for better user experience
+
   const formInputs = contactForm.querySelectorAll('input, select, textarea');
   formInputs.forEach(input => {
     input.addEventListener('blur', function() {
-      validateInput(this);
+      validateForm(); // For live validation
     });
   });
- 
-  function validateInput(input) {
-    const errorId = input.id + 'Error';
-    const errorElement = document.getElementById(errorId);
-   
-    if (!errorElement) return;
-   
-    errorElement.textContent = '';
-   
-    if (input.id === 'name' && input.value.trim() === '') {
-      errorElement.textContent = 'Name is required';
-    } else if (input.id === 'email') {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(input.value)) {
-        errorElement.textContent = 'Please enter a valid email address';
-      }
-    } else if (input.id === 'phone') {
-      const phonePattern = /^\d{9,15}$/;
-      if (!phonePattern.test(input.value)) {
-        errorElement.textContent = 'Please enter a valid phone number';
-      }
-    }
-  }
 });
 
     
