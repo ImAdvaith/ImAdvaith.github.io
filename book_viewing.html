@@ -1061,7 +1061,7 @@ input.error, select.error, textarea.error {
                     
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" class="form-control"></textarea>
+                        <textarea id="message" class="form-control" ></textarea>
                     </div>
                     
                     <div class="checkbox-group">
@@ -1254,13 +1254,13 @@ document.addEventListener("click", (e) => {
 });
 
           
-          document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('form');
   const confirmationMessage = document.getElementById('confirmationMessage');
   const closeConfirmation = document.getElementById('closeConfirmation');
   
   // Add error message elements after each input
-  const inputFields = ['name', 'email', 'phone', 'date', 'time'];
+  const inputFields = ['name', 'email', 'phone', 'date', 'time', 'message']; // Added 'message' here
   inputFields.forEach(field => {
     const input = document.getElementById(field);
     const errorSpan = document.createElement('span');
@@ -1318,7 +1318,14 @@ document.addEventListener("click", (e) => {
       document.getElementById('timeError').textContent = 'Time is required';
       isValid = false;
     }
-    
+
+    // Validate message
+    const messageInput = document.getElementById('message');
+    if (messageInput.value.trim() === '') {
+      document.getElementById('messageError').textContent = 'Message is required';
+      isValid = false;
+    }
+
     return isValid;
   }
   
