@@ -441,67 +441,84 @@
     </div>
 
     <script>
-        // Toggle password visibility
-        const passwordToggle = document.querySelector('.password-toggle');
-        const passwordInput = document.getElementById('password');
-      
-        passwordToggle.addEventListener('click', function () {
-          if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            passwordToggle.textContent = '👁️‍🗨️';
-          } else {
-            passwordInput.type = 'password';
-            passwordToggle.textContent = '👁️';
-          }
-        });
-      
-        // Form submission with username saving and loading animation
-        const form = document.querySelector('form');
-        const loadingOverlay = document.querySelector('.loading-overlay');
-        const progressFill = document.querySelector('.progress-fill');
-      
-        form.addEventListener('submit', function (event) {
-          event.preventDefault();
-      
-          const name = document.getElementById('name').value.trim();
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-      
-          // Save name to localStorage
-          localStorage.setItem("username", name);
-          console.log("Saved username:", name);
-      
-          // Show loading animation
-          loadingOverlay.classList.add('active');
-      
-          // Animate progress bar
-          setTimeout(() => {
-            progressFill.style.width = '100%';
-          }, 100);
-      
-          // Simulate delay before redirect
-          setTimeout(() => {
-            window.location.href = 'lgdin_hero.html';
-          }, 2600);
-        });
-      
-        // Instant login functionality
-        document.querySelector('.instant-login a').addEventListener('click', function (event) {
-          event.preventDefault();
-      
-          localStorage.setItem("username", "InstantUser");
-      
-          loadingOverlay.classList.add('active');
-      
-          setTimeout(() => {
-            progressFill.style.width = '100%';
-          }, 100);
-      
-          setTimeout(() => {
-            window.location.href = 'lgdin_hero.html';
-          }, 2600);
-        });
-      </script>
+  // Toggle password visibility
+  const passwordToggle = document.querySelector('.password-toggle');
+  const passwordInput = document.getElementById('password');
+
+  passwordToggle.addEventListener('click', function () {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      passwordToggle.textContent = '👁️‍🗨️';
+    } else {
+      passwordInput.type = 'password';
+      passwordToggle.textContent = '👁️';
+    }
+  });
+
+  // Form submission with validation, username saving, and loading animation
+  const form = document.querySelector('form');
+  const loadingOverlay = document.querySelector('.loading-overlay');
+  const progressFill = document.querySelector('.progress-fill');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    // --- Validation ---
+    if (/\d/.test(name)) {
+      alert("Name should not contain numbers.");
+      return;
+    }
+
+    if (!email.includes("@") || !email.includes(".com")) {
+      alert("Email must include '@' and end with '.com'.");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
+    // Save name to localStorage
+    localStorage.setItem("username", name);
+    console.log("Saved username:", name);
+
+    // Show loading animation
+    loadingOverlay.classList.add('active');
+
+    // Animate progress bar
+    setTimeout(() => {
+      progressFill.style.width = '100%';
+    }, 100);
+
+    // Simulate delay before redirect
+    setTimeout(() => {
+      window.location.href = 'lgdin_hero.html';
+    }, 2600);
+  });
+
+  // Instant login functionality
+  document.querySelector('.instant-login a').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    localStorage.setItem("username", "InstantUser");
+
+    loadingOverlay.classList.add('active');
+
+    setTimeout(() => {
+      progressFill.style.width = '100%';
+    }, 100);
+
+    setTimeout(() => {
+      window.location.href = 'lgdin_hero.html';
+    }, 2600);
+  });
+</script>
+
       
 </body>
 </html>
