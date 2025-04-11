@@ -2309,6 +2309,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
+     const languageSelect = document.getElementById('language');
+    const messageTextarea = document.getElementById('message');
     
     // Clear previous error messages
     document.querySelectorAll('.error-message').forEach(error => {
@@ -2334,6 +2336,17 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
       isValid = false;
     }
+
+     if (!languageSelect.value) {
+      document.getElementById('languageError').textContent = 'Please select a preferred language';
+      isValid = false;
+    }
+
+     if (messageTextarea.value.trim() === '') {
+      document.getElementById('messageError').textContent = 'Message cannot be empty';
+      isValid = false;
+    }
+
     
     return isValid;
   }
@@ -2386,6 +2399,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!phonePattern.test(input.value)) {
         errorElement.textContent = 'Please enter a valid phone number';
       }
+    } else if (input.id === 'language' && !input.value) {
+      errorElement.textContent = 'Please select a preferred language';
+    } else if (input.id === 'message' && input.value.trim() === '') {
+      errorElement.textContent = 'Message cannot be empty';
     }
   }
 });
